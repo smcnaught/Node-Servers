@@ -13,7 +13,7 @@ function requestHandler(request, response) {
     // response.end("url: " + JSON.stringify(urlParts));
     switch (urlParts.pathname) {
         case "/":
-            response.end("You're in trouble")
+            displayRoot(urlParts.pathname, request, response);
             break;
         case "/portfolio":
             response.end("This is my portfolio")
@@ -29,6 +29,15 @@ function requestHandler(request, response) {
             console.log("Might not have worked");
             break;
     }
+};
+
+function displayRoot(url, request, response) {
+    var myHTML = "<html>";
+    myHTML += "<body><h1>Home Page</h1>";
+    myHTML += "<a href='/portfolio'>Portfolio Page</a>";
+    myHTML += "</body></html>";
+    response.writeHead(200, { 'Content-Type': "text/html" });
+    response.end(myHTML);
 };
 
 // Create a server that functions with requestHandler as the main function.
