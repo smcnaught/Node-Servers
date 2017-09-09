@@ -13,15 +13,19 @@
 // Use the twitter package inside the response to also return a random tweet
 
 var http = require('http');
+var twitter = require('twitter');
 var PORT1 = 7000;
 var PORT2 = 7500;
+var nicePhrasesArr = ["You are cool", "You look nice", "What a good friend"];
+var meanPhrasesArr = ["You suck", "You have issues", "Did your mom drop you as a baby?"];
+var randomNumb = Math.floor(Math.random() * 3);
 
 function requestPort1(request, response){
-    response.end("You are awesome");
+    response.end(nicePhrasesArr[randomNumb]);
 };
 
 function requestPort2(request, response){
-    response.end("You totally suck");
+    response.end(meanPhrasesArr[randomNumb]);
 };
 
 // Create a server that functions with requestHandler as the main function.
